@@ -1,0 +1,103 @@
+var let const
+
+js script is synchronous in nature with asynchroity features that is given by js engine 
+js is single threaded language 
+js is compiled or interpreted : its both but runs on chrome v8 engine 
+
+if you want to run js outside browser we use nodejs    firefix - spidermonkey , edge - chakra
+node js is also built on top of fastes v8 engine built on top of c++; - cross platform 
+
+
+for loop an all;
+synch code blocks main thread
+js code executes line by line par agr kuch bhi async krwa rhe hai 
+js ko body k closing tag se phle integrate krte hai html m taki phle pori htm; load hoje
+
+global execution context : GEC
+two side - memory and code of execution
+js executesd code in two phases - first phase is memory execution second is variable assign and code execution
+console.log("Hello World");
+
+var a = 123;
+
+console.log(a);
+
+function abc(){
+    console.log("This is function ABC");
+}
+
+abc();
+
+var b = 300;
+
+console.log(b);
+
+
+memory me dalega sbse phle is code as a:undefined then abc: func abc(){poora ka poora s it is} then b:undefined ---phase 1 completed
+phase 2 - a = 123 - then - (agr is function k anr var )
+
+try applying debugger on chrome 
+time between pahse 1 and phase is called temporal dead zone (TDZ)
+
+hoisting
+
+
+named function / variable funtion
+types of error : 
+syntax error - refrence error - type error
+
+undefined nhi aega let k case m - <value unavailable>
+
+lexical scope environment - works like top to bottom 
+
+
+
+
+
+
+for(var i = 0; i <= 5; i++){
+    //console.log(i);
+    setTimeout(()=>{
+        console.log(i);
+    }, 2000)
+}
+
+isme 6 baabr 6 aya 
+why?
+apnaa for loop synchronously chlta rhega ..settimeout async in nature hai --- 
+
+or yhi agr hum let se krege  har i apne apne settimeout ke scope bnaeke baithe hai 
+
+ab isi ko hum khali var use krke bhi theek kr skte hai 
+using closure 
+
+for(var i = 0; i <= 5; i++){
+    function closure(i){
+        setTimeout(()=>{
+            console.log(i);
+        }, 2000)
+    }
+    closure(i);
+}
+
+// mdn doc se acha kuch nhi 
+ab har function apna khud ka scope bnake aa rha ha
+advantages of closure 
+data hiding - encapsulation
+disadvantage:
+closures holds the state humesha and memory -- overconsumption of memory -- not garbage collected
+
+
+
+
+asycn:
+1. callback->
+2.higher order function HOF - > function which take another function as an argument or return a function----write what is aprama and argument
+function xyz(cb){
+    console.log("I am XYZ function");
+}
+function cb(){
+    console.log("I am CB function");
+}
+xyz(cb);
+isme chlega xyz only
